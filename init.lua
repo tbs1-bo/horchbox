@@ -1,7 +1,7 @@
 
 function start_prog_cb()
    print("starting program")
-   dofile("deviceszeigometer.lua")
+   dofile("snidev.lua")
 end
 
 print("starting device")

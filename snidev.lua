@@ -1,9 +1,7 @@
 -- This module shows the number of clients that try to
 -- probe the ESP8266 in AP-mode.
-
--- Look for devices nearby and show them on the zeigometer.
--- from
--- https://nodemcu.readthedocs.io/en/master/en/modules/wifi/#wifieventmonregister
+--
+-- Look for devices nearby and send them to an MQTT-Broker.
 
 require "credentials"
 
@@ -11,7 +9,7 @@ conf = {}
 conf.mqtt = {
    host = "iot.eclipse.org",
    port = 1883,
-   topic = "zeigometer"
+   topic = "snidev"
 }
 conf.deepsleep = {
    -- how many ms to wait before sleeping
@@ -51,7 +49,7 @@ end
 
 function got_ip_cb()
    print("connected to wifi with IP "..wifi.sta.getip())
-   mqtt_client = mqtt.Client("zeigometer", 100)
+   mqtt_client = mqtt.Client("snidev", 100)
    mqtt_client:connect(conf.mqtt.host, conf.mqtt.port, 0,
 		       -- callback when connected
 		       mqtt_connected_cb)
