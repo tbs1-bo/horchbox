@@ -39,3 +39,8 @@ luac.out
 *.x86_64
 *.hex
 
+# emacs backup files
+*~
+
+# credentials file
+credentials.lua
