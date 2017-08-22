@@ -6,6 +6,10 @@
 require "credentials"
 
 conf = {}
+conf.wifi = {
+   ssid = credentials.WIFI_SSID,
+   password = credentials.WIFI_PASSWORD
+}
 conf.mqtt = {
    host = "iot.eclipse.org",
    port = 1883,
@@ -81,8 +85,9 @@ end
 
 -- configure station and start connection
 sta_config={}
-sta_config.ssid = WIFI_SSID
-sta_config.pwd = WIFI_PASSWORD
+sta_config.ssid = conf.wifi.ssid
+sta_config.pwd = conf.wifi.password
+-- register call back function after connect
 sta_config.got_ip_cb = got_ip_cb
 
 local timer = tmr.create()
