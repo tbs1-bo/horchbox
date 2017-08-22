@@ -35,6 +35,7 @@ function probe_received_cb(T)
    clients[T.MAC].count = clients[T.MAC].count + 1
    clients[T.MAC].rssi = T.RSSI
 
+   -- count clients seen so far and post them to broker
    count = 0
    for mac,vars in pairs(clients) do
       count = count + 1
@@ -55,7 +56,7 @@ function got_ip_cb()
    print("connected to wifi with IP "..wifi.sta.getip())
    mqtt_client = mqtt.Client("snidev", 100)
    mqtt_client:connect(conf.mqtt.host, conf.mqtt.port, 0,
-		       -- callback when connected
+		       -- callback when connected to broker
 		       mqtt_connected_cb)
 end
 
@@ -63,13 +64,17 @@ function mqtt_connected_cb()
    print("connected to mqtt broker")
    mqtt_client:publish(conf.mqtt.topic..'/status', 'connected to mqtt', 1, 1)
    wifi.eventmon.register(wifi.eventmon.AP_PROBEREQRECVED,
+			  -- register call back for receiving probes
 			  probe_received_cb)
 end
 
+-- enter deep sleep mode after timer finishes
+-- https://nodemcu.readthedocs.io/en/master/en/modules/node/#nod
 function time_elapsed_cb()
    print("entering deep sleep mode")
    msg = 'deep sleep for '..(conf.deepsleep.sleeptime/1000000)..' seconds'
    print(msg)
+
    mqtt_client:publish(conf.mqtt.topic..'/status', msg , 1, 1)
    -- waiting some time for the message to be published
    local timer = tmr.create()
@@ -77,23 +82,25 @@ function time_elapsed_cb()
    timer:alarm(500, tmr.ALARM_SINGLE,
 	       function()
 		  -- enter deep sleep mode
-		  -- https://nodemcu.readthedocs.io/en/master/en/modules/node/#nodedsleep
+edsleep
 		  node.dsleep(conf.deepsleep.sleeptime)
 	       end
    )
 end
 
--- configure station and start connection
+
+-- configure station, register call back function after connect
 sta_config={}
 sta_config.ssid = conf.wifi.ssid
 sta_config.pwd = conf.wifi.password
--- register call back function after connect
 sta_config.got_ip_cb = got_ip_cb
 
+-- start the wifi with the given configuration
+wifi.sta.config(sta_config)
+
+-- starting timer to alarm for deep sleep shutdown
 local timer = tmr.create()
 timer:register(conf.deepsleep.time_before_sleep,
 	       tmr.ALARM_SINGLE,
 	       time_elapsed_cb)
 timer:start()
-
-wifi.sta.config(sta_config)
