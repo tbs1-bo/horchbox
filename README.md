@@ -8,6 +8,16 @@ an MQTT-Broker.
 For instance, this device can be used to check presence of devices in
 a room.
 
+Sketch
+------
+
+![sketch](doc/sketch_bb.png)
+
+- Connect Vin and GND to an external power supply.
+- Connect GPIO16 (D0) with RESET to enable awakening from deep sleep.
+- Put everything into a suitable case.
+
+
 Configuration
 -------------
 
@@ -17,9 +27,6 @@ settings inside.
 
 Installation
 -----------
-
-Connect WAKEUP-pin GPIO16 with the RESET pin to enable awakening after
-deep sleep.
 
 Copy all lua files onto the device. Use one of the tools as described
 in the
