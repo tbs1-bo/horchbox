@@ -13,7 +13,7 @@ conf.wifi = {
 conf.mqtt = {
    host = "iot.eclipse.org",
    port = 1883,
-   topic = "snidev"
+   topic = "horchbox"
 }
 conf.deepsleep = {
    -- how many ms to wait before sleeping
@@ -54,7 +54,7 @@ end
 
 function got_ip_cb()
    print("connected to wifi with IP "..wifi.sta.getip())
-   mqtt_client = mqtt.Client("snidev", 100)
+   mqtt_client = mqtt.Client("horchbox", 100)
    mqtt_client:connect(conf.mqtt.host, conf.mqtt.port, 0,
 		       -- callback when connected to broker
 		       mqtt_connected_cb)

@@ -1,7 +1,7 @@
 
 function start_prog_cb()
    print("starting program")
-   dofile("snidev.lua")
+   dofile("horchbox.lua")
 end
 
 print("starting device")

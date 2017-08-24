@@ -1,8 +1,8 @@
-snidev
-======
+Horchbox
+========
 
-snidev is short for 'sniffing device'. It is based on a ESP8266 on a
-nodemcu-devkit board that listenes for Wifi-beacons and tells them to
+Horchbox is a listening device. It is based on a ESP8266 on a
+nodemcu-devkit board that listens for Wifi-beacons and tells them to
 an MQTT-Broker.
 
 For instance, this device can be used to check presence of devices in
