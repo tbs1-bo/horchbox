@@ -35,6 +35,7 @@ function probe_received_cb(T)
    clients[T.MAC].count = clients[T.MAC].count + 1
    clients[T.MAC].rssi = T.RSSI
 
+   -- TODO move publishing to time before deep sleep.
    -- count clients seen so far and post them to broker
    count = 0
    for mac,vars in pairs(clients) do
