@@ -13,7 +13,7 @@ conf.wifi = {
 conf.mqtt = {
    host = "iot.eclipse.org",
    port = 1883,
-   topic = "horchbox"
+   topic = "horchbox/"..node.chipid()
 }
 conf.deepsleep = {
    -- how many ms to wait before sleeping
