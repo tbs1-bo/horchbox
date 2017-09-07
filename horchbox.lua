@@ -7,8 +7,8 @@ require "credentials"
 
 conf = {}
 conf.wifi = {
-   ssid = credentials.WIFI_SSID,
-   password = credentials.WIFI_PASSWORD
+   ssid = WIFI_SSID,
+   password = WIFI_PASSWORD
 }
 conf.mqtt = {
    host = "iot.eclipse.org",
