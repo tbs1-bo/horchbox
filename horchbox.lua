@@ -82,7 +82,6 @@ function time_elapsed_cb()
    timer:alarm(500, tmr.ALARM_SINGLE,
 	       function()
 		  -- enter deep sleep mode
-edsleep
 		  node.dsleep(conf.deepsleep.sleeptime)
 	       end
    )
