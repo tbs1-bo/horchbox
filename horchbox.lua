@@ -95,6 +95,7 @@ sta_config.pwd = conf.wifi.password
 sta_config.got_ip_cb = got_ip_cb
 
 -- start the wifi with the given configuration
+print("connecting to wifi "..conf.wifi.ssid)
 wifi.sta.config(sta_config)
 
 -- starting timer to alarm for deep sleep shutdown
