@@ -75,7 +75,11 @@ function time_elapsed_cb()
    msg = 'deep sleep for '..(conf.deepsleep.sleeptime/1000000)..' seconds'
    print(msg)
 
-   mqtt_client:publish(conf.mqtt.topic..'/status', msg , 1, 1)
+   -- check if client present - maybe not if no connection established before
+   if mqtt_client then
+      mqtt_client:publish(conf.mqtt.topic..'/status', msg , 1, 1)
+   end
+
    -- waiting some time for the message to be published
    local timer = tmr.create()
    --          ms
