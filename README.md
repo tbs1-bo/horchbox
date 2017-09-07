@@ -28,6 +28,10 @@ settings inside.
 Installation
 -----------
 
+[Build](https://nodemcu.readthedocs.io/en/master/en/build/)
+and [flash](https://nodemcu.readthedocs.io/en/master/en/flash/) the
+firmware onto the device.
+
 Copy all lua files onto the device. Use one of the tools as described
 in the
 [nodemcu Documentation](https://nodemcu.readthedocs.io/en/master/en/upload/) 
