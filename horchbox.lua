@@ -98,6 +98,9 @@ sta_config.ssid = conf.wifi.ssid
 sta_config.pwd = conf.wifi.password
 sta_config.got_ip_cb = got_ip_cb
 
+-- configure stationap: combine station and ap mode
+wifi.setmode(wifi.STATIONAP)
+
 -- start the wifi with the given configuration
 print("connecting to wifi "..conf.wifi.ssid)
 wifi.sta.config(sta_config)
