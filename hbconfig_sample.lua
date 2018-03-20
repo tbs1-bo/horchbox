@@ -1,5 +1,5 @@
 
--- move this file to credentials.lua
+-- move this file to hbconfig.lua
 
 -- Wifi settings
 WIFI_SSID = "XXXXX"

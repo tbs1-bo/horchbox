@@ -21,7 +21,7 @@ Sketch
 Configuration
 -------------
 
-Copy file `credentials_sample.lua` to `credentials.lua` and change the
+Copy file `hbconfig_sample.lua` to `hbconfig.lua` and change the
 settings inside.
 
 

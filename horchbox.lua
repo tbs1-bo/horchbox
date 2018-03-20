@@ -3,7 +3,7 @@
 --
 -- Look for devices nearby and send them to an MQTT-Broker.
 
-require "credentials"
+require "hbconfig"
 
 conf = {}
 conf.wifi = {
