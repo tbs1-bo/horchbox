@@ -12,9 +12,9 @@ conf.wifi = {
 }
 -- configure your mqtt broker and topic as needed.
 conf.mqtt = {
-   host = "iot.eclipse.org",
-   port = 1883,
-   topic = "horchbox/"..node.chipid()
+   host = MQTT_HOST,
+   port = MQTT_PORT,
+   topic = MQTT_TOPIC_PREFIX..node.chipid()
 }
 conf.deepsleep = {
    -- how many ms to wait before sleeping
