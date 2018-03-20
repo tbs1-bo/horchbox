@@ -10,6 +10,7 @@ conf.wifi = {
    ssid = WIFI_SSID,
    password = WIFI_PASSWORD
 }
+-- configure your mqtt broker and topic as needed.
 conf.mqtt = {
    host = "iot.eclipse.org",
    port = 1883,
