@@ -57,6 +57,11 @@ end
 function got_ip_cb()
    print("connected to wifi with IP "..wifi.sta.getip())
    mqtt_client = mqtt.Client("horchbox", 100)
+   -- TODO add last will and testament (LWT) that will be sent when disconnected
+   -- must be set before connecting
+   -- https://nodemcu.readthedocs.io/en/master/en/modules/mqtt/#mqttclientlwt
+   -- untested:
+   -- mqtt_client:lwt(conf.mqtt.topic..'/LWT', 'offline')
    mqtt_client:connect(conf.mqtt.host, conf.mqtt.port, 0,
 		       -- callback when connected to broker
 		       mqtt_connected_cb)
