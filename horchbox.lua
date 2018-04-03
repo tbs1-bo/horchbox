@@ -61,7 +61,7 @@ function got_ip_cb()
    -- must be set before connecting
    -- https://nodemcu.readthedocs.io/en/master/en/modules/mqtt/#mqttclientlwt
    -- untested:
-   -- mqtt_client:lwt(conf.mqtt.topic..'/LWT', 'offline')
+   -- mqtt_client:lwt(conf.mqtt.topic..'/status', 'offline')
    mqtt_client:connect(conf.mqtt.host, conf.mqtt.port, 0,
 		       -- callback when connected to broker
 		       mqtt_connected_cb)
